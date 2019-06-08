@@ -1,4 +1,4 @@
-package starter.hello;
+package account.transfers;
 
 import static io.restassured.RestAssured.get;
 import static org.hamcrest.Matchers.equalTo;

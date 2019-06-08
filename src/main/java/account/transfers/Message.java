@@ -1,4 +1,4 @@
-package starter.hello;
+package account.transfers;
 
 public class Message {
 

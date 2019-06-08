@@ -1,4 +1,4 @@
-package starter.hello;
+package account.transfers;
 
 import org.jooby.Jooby;
 import org.jooby.json.Jackson;

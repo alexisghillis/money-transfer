@@ -6,29 +6,29 @@
   <parent>
     <groupId>org.jooby</groupId>
     <artifactId>jooby-project</artifactId>
-    <version>1.5.0</version>
+    <version>1.6.0</version>
   </parent>
 
-  <artifactId>hello-starter</artifactId>
-  <groupId>starter.hello</groupId>
+  <artifactId>account-transfers</artifactId>
+  <groupId>account-transfers</groupId>
   <version>1.0</version>
 
-  <name>hello-starter</name>
+  <name>account-transfers</name>
 
   <properties>
-    <jooby.version>1.5.0</jooby.version>
+    <jooby.version>1.6.0</jooby.version>
 
     <!-- Startup class -->
-    <application.class>starter.hello.App</application.class>
+    <application.class>account.transfers.App</application.class>
   </properties>
 
   <dependencies>
     <!-- Server -->
     <dependency>
       <groupId>org.jooby</groupId>
-      <artifactId>jooby-netty</artifactId>
+      <artifactId>jooby-undertow</artifactId>
     </dependency>
-
+    <!-- Jackson -->
     <dependency>
       <groupId>org.jooby</groupId>
       <artifactId>jooby-jackson</artifactId>
@@ -45,6 +45,12 @@
       <groupId>io.rest-assured</groupId>
       <artifactId>rest-assured</artifactId>
       <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.8</version>
     </dependency>
   </dependencies>
 
