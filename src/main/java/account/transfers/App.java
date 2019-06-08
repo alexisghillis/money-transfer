@@ -1,6 +1,14 @@
 package account.transfers;
 
+import account.transfers.controller.AccountController;
+import account.transfers.repository.AccountRepository;
+import account.transfers.repository.impl.AccountInMemoryRepository;
+import account.transfers.service.AccountTransactionService;
+import account.transfers.service.CurrencyRatesService;
+import account.transfers.service.impl.AccountTransactionServiceImpl;
+import account.transfers.service.impl.CurrencyRatesServiceImpl;
 import org.jooby.Jooby;
+import org.jooby.apitool.ApiTool;
 import org.jooby.json.Jackson;
 
 /**
@@ -9,15 +17,18 @@ import org.jooby.json.Jackson;
 public class App extends Jooby {
 
   {
-    /** Render JSON: */
+    onStart(registry -> DataLoader.loadData(registry.require(AccountRepository.class)));
+
     use(new Jackson());
 
-    /**
-     * Say hello:
-     */
-    get(req -> {
-      String name = req.param("name").value("Jooby");
-      return new Message("Hello " + name + "!");
+    use(new ApiTool().swagger());
+
+    use(AccountController.class);
+
+    use((environment, configuration, binder) -> {
+      binder.bind(AccountTransactionService.class).to(AccountTransactionServiceImpl.class);
+      binder.bind(CurrencyRatesService.class).to(CurrencyRatesServiceImpl.class);
+      binder.bind(AccountRepository.class).to(AccountInMemoryRepository.class);
     });
 
   }

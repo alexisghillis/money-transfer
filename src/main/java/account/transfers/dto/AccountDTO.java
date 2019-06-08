@@ -1,6 +1,5 @@
 package account.transfers.dto;
 
-import account.transfers.util.Currency;
 import java.math.BigDecimal;
 import java.util.UUID;
 import lombok.Data;

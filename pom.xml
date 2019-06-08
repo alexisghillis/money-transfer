@@ -28,6 +28,13 @@
       <groupId>org.jooby</groupId>
       <artifactId>jooby-undertow</artifactId>
     </dependency>
+
+    <!-- API Tool -->
+    <dependency>
+      <groupId>org.jooby</groupId>
+      <artifactId>jooby-apitool</artifactId>
+    </dependency>
+
     <!-- Jackson -->
     <dependency>
       <groupId>org.jooby</groupId>
@@ -60,6 +67,19 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
+      </plugin>
+
+      <!-- Keep Swagger API at deploy time -->
+      <plugin>
+        <groupId>org.jooby</groupId>
+        <artifactId>jooby-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>apitool</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>

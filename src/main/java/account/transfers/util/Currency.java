@@ -14,5 +14,4 @@ public enum Currency {
   POLAND_ZLOTY("PLN");
 
   private String currencyAbbr;
-
 }

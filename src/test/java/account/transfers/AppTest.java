@@ -5,6 +5,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 import org.jooby.test.JoobyRule;
 import org.junit.ClassRule;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class AppTest {
@@ -16,6 +17,7 @@ public class AppTest {
   @ClassRule
   public static JoobyRule app = new JoobyRule(new App());
 
+  @Ignore
   @Test
   public void integrationTest() {
     get("/")
