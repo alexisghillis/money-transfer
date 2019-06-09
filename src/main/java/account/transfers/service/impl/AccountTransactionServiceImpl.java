@@ -42,7 +42,7 @@ public class AccountTransactionServiceImpl implements AccountTransactionService 
           + "funds!", accountFrom.getAccountId(), convertedAmountFrom, accountTo.getCurrency()));
     }
 
-    accountFrom.setAccountBalance(accountFrom.getAccountBalance().subtract(convertedAmountFrom));
+    accountFrom.setAccountBalance(accountFrom.getAccountBalance().subtract(amount));
     accountTo.setAccountBalance(accountTo.getAccountBalance().add(convertedAmountFrom));
   }
 }

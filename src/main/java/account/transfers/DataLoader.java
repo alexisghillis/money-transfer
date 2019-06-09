@@ -11,9 +11,11 @@ import java.util.stream.IntStream;
 
 public class DataLoader {
 
+  public static final int MAX_ACCOUNTS = 100;
+
   public static void loadData(AccountRepository accountRepository) {
 
-    IntStream.range(1, 100)
+    IntStream.range(1, MAX_ACCOUNTS)
         .forEach(i -> {
           Account account = new Account();
 

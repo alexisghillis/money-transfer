@@ -1,46 +1,37 @@
-[![Build Status](https://travis-ci.org/jooby-project/hello-starter.svg?branch=master)](https://travis-ci.org/jooby-project/hello-starter)
-# hello starter
+# Money transfer backend application
 
-JSON Starter project.
+Transfer money between two accounts. Each account has a specific currency attached to it.
+You can add, query and delete accounts and make transactions between accounts.
+Various checks are performed, if the destination account exists or if the sender has enough money after conversion to
+ the currency of the destination account.
+ 
+ Created integration tests and unit test.
+ 
+ Used Jooby as the framework.
+ 
+ Added a swagger for swag.
+ 
+ Alexis Ghillis 9 June 2019
 
-## quick preview
+## Task
 
-This project contains a simple application that:
-
-* Accept an optional `name` HTTP parameter
-* Creates a POJO and send the response back as JSON
-
-[App.java](https://github.com/jooby-project/hello-starter/blob/master/src/main/java/starter/hello/App.java):
-
-```java
-public class App extends Jooby {
-
-  {
-    /** Render JSON: */
-    use(new Jackson());
-
-    /**
-     * Say hello:
-     */
-    get("/", req -> {
-      String name = req.param("name").value("Jooby");
-      return new Message("Hello " + name + "!");
-    });
-  }
-
-  public static void main(final String[] args) {
-    run(App::new, args);
-  }
-
-}
-```
+Design and implement a RESTful API (including data model and the backing implementation) for
+money transfers between accounts.
+Explicit requirements:
+1. You can use Java or Kotlin.
+2. Keep it simple and to the point (e.g. no need to implement any authentication).
+3. Assume the API is invoked by multiple systems and services on behalf of end users.
+4. You can use frameworks/libraries if you like (except Spring), but don't forget about
+requirement #2 and keep it simple and avoid heavy frameworks.
+5. The datastore should run in-memory for the sake of this test.
+6. The final result should be executable as a standalone program (should not require a
+pre-installed container/server).
+7. Demonstrate with tests that the API works as expected.
+Implicit requirements:
+1. The code produced by you is expected to be of high quality.
+2. There are no detailed requirements, use common sense.
+Please put your work on github or bitbucket.
 
 ## run
 
     mvn jooby:run
-
-## help
-
-* Read the [jooby documentation](http://jooby.org/doc)
-* Join the [channel](https://gitter.im/jooby-project/jooby)
-* Join the [group](https://groups.google.com/forum/#!forum/jooby-project)
