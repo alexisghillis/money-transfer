@@ -1,5 +1,5 @@
-import account.transfers.App;
-import account.transfers.DataLoader;
+package account.transfers;
+
 import account.transfers.dto.AccountTransferRequestDTO;
 import account.transfers.repository.AccountRepository;
 import account.transfers.repository.entities.Account;

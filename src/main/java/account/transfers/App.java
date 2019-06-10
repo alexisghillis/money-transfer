@@ -3,9 +3,9 @@ package account.transfers;
 import account.transfers.controller.AccountController;
 import account.transfers.repository.AccountRepository;
 import account.transfers.repository.impl.AccountInMemoryRepository;
-import account.transfers.service.AccountTransactionService;
+import account.transfers.service.AccountService;
 import account.transfers.service.CurrencyRatesService;
-import account.transfers.service.impl.AccountTransactionServiceImpl;
+import account.transfers.service.impl.AccountServiceImpl;
 import account.transfers.service.impl.CurrencyRatesServiceImpl;
 import org.jooby.Jooby;
 import org.jooby.apitool.ApiTool;
@@ -26,7 +26,7 @@ public class App extends Jooby {
     use(AccountController.class);
 
     use((environment, configuration, binder) -> {
-      binder.bind(AccountTransactionService.class).to(AccountTransactionServiceImpl.class);
+      binder.bind(AccountService.class).to(AccountServiceImpl.class);
       binder.bind(CurrencyRatesService.class).to(CurrencyRatesServiceImpl.class);
       binder.bind(AccountRepository.class).to(AccountInMemoryRepository.class);
     });

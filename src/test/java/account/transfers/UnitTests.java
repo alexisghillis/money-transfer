@@ -1,10 +1,12 @@
 package account.transfers;
 
+import account.transfers.converter.AccountDTOToAccountConverter;
+import account.transfers.converter.AccountToAccountDTOConverter;
 import account.transfers.repository.AccountRepository;
 import account.transfers.repository.entities.Account;
-import account.transfers.service.AccountTransactionService;
+import account.transfers.service.AccountService;
 import account.transfers.service.CurrencyRatesService;
-import account.transfers.service.impl.AccountTransactionServiceImpl;
+import account.transfers.service.impl.AccountServiceImpl;
 import account.transfers.util.Currency;
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -23,13 +25,20 @@ public class UnitTests {
   private AccountRepository accountRepository;
   @Mock
   private CurrencyRatesService currencyRatesService;
-  private AccountTransactionService accountTransactionService;
+  @Mock
+  private AccountToAccountDTOConverter accountToAccountDTOConverter;
+  @Mock
+  private AccountDTOToAccountConverter accountDTOToAccountConverter;
+  private AccountService accountTransactionService;
+
+
 
   @Before
   public void setup() {
     MockitoAnnotations.initMocks(this);
 
-    accountTransactionService = new AccountTransactionServiceImpl(accountRepository, currencyRatesService);
+    accountTransactionService = new AccountServiceImpl(accountRepository, currencyRatesService,
+        accountToAccountDTOConverter, accountDTOToAccountConverter);
     Mockito.when(currencyRatesService
         .fetchCurrencyRate(Currency.EURO, Currency.GREAT_BRITAIN_POUND))
         .thenReturn(new BigDecimal("0.89"));
